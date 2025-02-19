@@ -1,0 +1,151 @@
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.242), rgba(0, 0, 0, 0.336)),
+                url('https://images.pexels.com/photos/30746908/pexels-photo-30746908/free-photo-of-la-torre-de-la-doncella-al-anochecer-en-estambul.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+    color: #fff;
+    padding: 20px;
+}
+
+.wrapper {
+    width: 350px;
+    padding: 30px 20px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    text-align: center;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.navLinks {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.navLinks .btnNavLink {
+    background: rgba(140, 92, 159, 0.45);
+    border: 2px solidrgba(103, 9, 119, 0.23);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #fefefe;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.navLinks .btnNavLink a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navLinks .btnNavLink:hover {
+    background-color:rgba(255, 0, 144, 0.25);
+    color: #fff;
+}
+
+.fmlrLogin {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campoForm {
+    position: relative;
+    text-align: left;
+}
+
+.lbForm {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+input:focus {
+    border-color:rgb(119, 74, 116);
+    box-shadow: 0 0 10px rgba(208, 0, 255, 0.5);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.campoBtns .btnEnviar {
+    width: 100%;
+    padding: 12px;
+    background:rgb(70, 33, 144, 0.76); //70, 33, 144, 0.48
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s ease;
+}
+
+.campoBtns .btnEnviar:hover {
+    background:rgba(70, 33, 144, 0.48);
+}
+
+.RecuperarPwd {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.RecuperarPwd a {
+    color: #edb5b5;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.RecuperarPwd a:hover {
+    text-decoration: underline;
+}
+
+.campoForm .lbForm:last-child {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
