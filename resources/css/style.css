@@ -393,3 +393,23 @@ select option:hover {
         width: 80%;
     }
 }}}
+
+
+
+.btnSubirDocumento {
+    width: 100%;
+    padding: 12px;
+    background: rgba(70, 33, 144, 0.76);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s ease;
+}
+
+.btnSubirDocumento:hover {
+    background: rgba(70, 33, 144, 0.48);
+}
