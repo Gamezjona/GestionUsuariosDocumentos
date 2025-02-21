@@ -1,10 +1,12 @@
 <?php
 require_once '../config/dbConection.php';
 
-class UserModel {
+class UserModel
+{
     private $conexion;
 
-    public function __construct() {
+    public function __construct()
+    {
         try {
             $this->conexion = new Conexion();
         } catch (Exception $e) {
@@ -14,7 +16,8 @@ class UserModel {
     }
 
     // 🔹 Crear Usuario
-    public function create($nombre, $apellido, $correo, $contrasena) {
+    public function create($nombre, $apellido, $correo, $contrasena)
+    {
         try {
             $sql = "INSERT INTO usuarios (nombre, apellido, correo, contrasena) VALUES (:nombre, :apellido, :correo, :contrasena)";
             $stmt = $this->conexion->pdo->prepare($sql);
@@ -30,7 +33,8 @@ class UserModel {
     }
 
     // 🔹 Obtener Usuario por ID
-    public function getById($id) {
+    public function getById($id)
+    {
         try {
             $sql = "SELECT * FROM usuarios WHERE id = :id";
             $stmt = $this->conexion->pdo->prepare($sql);
@@ -43,8 +47,25 @@ class UserModel {
         }
     }
 
+    // 🔹 Obtener Usuario por Correo
+    public function getByEmail($correo)
+    {
+        try {
+            $sql = "SELECT * FROM usuarios WHERE correo = :correo";
+            $stmt = $this->conexion->pdo->prepare($sql);
+            $stmt->bindParam(':correo', $correo);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            // Si ocurre un error, se retorna false
+            return false;
+        }
+    }
+
+
     // 🔹 Obtener Todos los Usuarios
-    public function getAll() {
+    public function getAll()
+    {
         try {
             $sql = "SELECT * FROM usuarios";
             $stmt = $this->conexion->pdo->query($sql);
@@ -56,7 +77,8 @@ class UserModel {
     }
 
     // 🔹 Actualizar Usuario
-    public function update($id, $nombre, $apellido, $correo, $contrasena) {
+    public function update($id, $nombre, $apellido, $correo, $contrasena)
+    {
         try {
             $sql = "UPDATE usuarios SET nombre = :nombre, apellido = :apellido, correo = :correo, contrasena = :contrasena WHERE id = :id";
             $stmt = $this->conexion->pdo->prepare($sql);
@@ -73,7 +95,8 @@ class UserModel {
     }
 
     // 🔹 Eliminar Usuario
-    public function delete($id) {
+    public function delete($id)
+    {
         try {
             $sql = "DELETE FROM usuarios WHERE id = :id";
             $stmt = $this->conexion->pdo->prepare($sql);
@@ -85,4 +108,3 @@ class UserModel {
         }
     }
 }
-?>

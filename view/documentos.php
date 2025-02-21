@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Verificación adicional para asegurar que el usuario esté correctamente logueado
+if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
+    header("Location: ../index.html");
+    exit(); // Es importante hacer un exit después de un redireccionamiento
+} else {
+    require '../controller/cShowListDocument.php';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,13 +29,19 @@
 
         <nav class="navLinks">
             <button class="btnNavLink">
-                <a class="linkNav" href="listadoDocumentos.html">Listado de Documentos</a>
+                <a class="linkNav" href="listadoDocumentos.php">Listado de Documentos</a>
             </button>
         </nav>
     </header>
 
     <div class="wrapper">
-        <form action="" class="fmlrLogin" enctype="multipart/form-data">
+        <form action="../controller/cCreateDocument.php" class="fmlrLogin" enctype="multipart/form-data" method="post">
+            <input type="text" name="usuario_id" hidden value="<?php echo $_SESSION['id']; ?>">
+
+            <div class="campoForm">
+                <label for="nombre" class="lbForm">Inserta el nombre del documento</label>
+                <input id="nombre" name="nombre" type="text" class="ip" required>
+            </div>
             <div class="campoForm">
                 <label for="documento" class="lbForm">Seleccionar Documento (Word, PDF, Excel)</label>
                 <input id="documento" name="documento" type="file" accept=".doc,.pdf,.xlsx" class="ip" required>
@@ -33,9 +51,10 @@
             </div>
         </form>
     </div>
+
+</body>
+</html>
+
 </body>
 
 </html>
-
-
-

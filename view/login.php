@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['nombre'])){
+    header("Location: ../view/listadoDocumentos.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +30,7 @@
         </nav>
     </header>
 
-    <form action="listadoDocumentos.html" class="fmlrLogin">
+    <form action="../controller/cLoginUser.php" class="fmlrLogin" method="post">
       <div class="campoForm">
         <label for="ipEmail" class="lbForm">Correo Electronico</label>
 

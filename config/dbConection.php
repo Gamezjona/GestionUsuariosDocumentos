@@ -1,7 +1,7 @@
 <?php
 class Conexion {
     private $host = "localhost";
-    private $dbname = "gestionusuariosdocumentos";
+    private $dbname = "userdocument";
     private $usuario = "root";
     private $password = "";
     public $pdo;
