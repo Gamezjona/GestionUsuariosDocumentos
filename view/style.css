@@ -34,10 +34,14 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
+    width: 100%; 
+    padding: 10px 20px;
+    background: linear-gradient(to right, #ffffff57, #9b27b042); 
+    border-radius: 0 0 10px 10px; 
 }
 
 .navLinks .btnNavLink {
-    background: rgba(140, 92, 159, 0.45);
+    background: rgba(140, 92, 159, 0.747);
     border: 2px solidrgba(103, 9, 119, 0.23);
     border-radius: 6px;
     padding: 8px 12px;
