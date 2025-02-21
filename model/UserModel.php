@@ -1,28 +1,31 @@
 <?php
 require_once '../config/dbConection.php';
 
-class User {
+class UserModel {
     private $conexion;
 
     public function __construct() {
         try {
             $this->conexion = new Conexion();
         } catch (Exception $e) {
-            die("Error de conexión: " . $e->getMessage());
+            // En caso de fallo en la conexión, se retorna false
+            return false;
         }
     }
 
     // 🔹 Crear Usuario
-    public function create($nombre, $apellido, $contrasena) {
+    public function create($nombre, $apellido, $correo, $contrasena) {
         try {
-            $sql = "INSERT INTO usuarios (nombre, apellido, contrasena) VALUES (:nombre, :apellido, :contrasena)";
+            $sql = "INSERT INTO usuarios (nombre, apellido, correo, contrasena) VALUES (:nombre, :apellido, :correo, :contrasena)";
             $stmt = $this->conexion->pdo->prepare($sql);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':apellido', $apellido);
+            $stmt->bindParam(':correo', $correo);
             $stmt->bindParam(':contrasena', $contrasena);
             return $stmt->execute();
         } catch (Exception $e) {
-            die("Error al insertar usuario: " . $e->getMessage());
+            // Si ocurre un error, se retorna false
+            return false;
         }
     }
 
@@ -35,7 +38,8 @@ class User {
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
-            die("Error al obtener usuario: " . $e->getMessage());
+            // Si ocurre un error, se retorna false
+            return false;
         }
     }
 
@@ -46,22 +50,25 @@ class User {
             $stmt = $this->conexion->pdo->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
-            die("Error al obtener usuarios: " . $e->getMessage());
+            // Si ocurre un error, se retorna false
+            return false;
         }
     }
 
     // 🔹 Actualizar Usuario
-    public function update($id, $nombre, $apellido, $contrasena) {
+    public function update($id, $nombre, $apellido, $correo, $contrasena) {
         try {
-            $sql = "UPDATE usuarios SET nombre = :nombre, apellido = :apellido WHERE id = :id";
+            $sql = "UPDATE usuarios SET nombre = :nombre, apellido = :apellido, correo = :correo, contrasena = :contrasena WHERE id = :id";
             $stmt = $this->conexion->pdo->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':apellido', $apellido);
+            $stmt->bindParam(':correo', $correo);
             $stmt->bindParam(':contrasena', $contrasena);
             return $stmt->execute();
         } catch (Exception $e) {
-            die("Error al actualizar usuario: " . $e->getMessage());
+            // Si ocurre un error, se retorna false
+            return false;
         }
     }
 
@@ -73,7 +80,8 @@ class User {
             $stmt->bindParam(':id', $id);
             return $stmt->execute();
         } catch (Exception $e) {
-            die("Error al eliminar usuario: " . $e->getMessage());
+            // Si ocurre un error, se retorna false
+            return false;
         }
     }
 }

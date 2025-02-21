@@ -1,7 +1,7 @@
 <?php
 require_once '../config/dbConection.php';
 
-class Documento {
+class DocumentModel {
     private $conexion;
     private $uploadDir = 'uploads/'; // Directorio de almacenamiento de archivos
 
