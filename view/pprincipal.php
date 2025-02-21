@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOSERO Tech</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.php">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
@@ -112,8 +112,8 @@
     <p>Innovación y creatividad para impulsar la tecnología. Conectamos ideas con soluciones para el futuro.</p>
 
     <div class="buttons">
-        <a href="index.html" class="btn-login">Iniciar Sesión</a>
-        <a href="registro.html" class="btn-register">Registrarse</a>
+        <a href="index.php" class="btn-login">Iniciar Sesión</a>
+        <a href="registro.php" class="btn-register">Registrarse</a>
     </div>
 </div>
 

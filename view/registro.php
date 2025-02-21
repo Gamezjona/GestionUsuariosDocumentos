@@ -20,7 +20,7 @@
 
         <nav class="navLinks">
             <button class="btnNavLink">
-                <a class="linkNav" href="pprincipal.html">Inicio</a>
+                <a class="linkNav" href="pprincipal.php">Inicio</a>
             </button>
         </nav>
     </header>
@@ -71,7 +71,7 @@
         <div class="RecuperarPwd">
             <label for="" class="RecuperarPwd">
                 <br>
-                <a href="index.html" class="linkRcpPwd"> Ya tengo una cuenta</a>
+                <a href="index.php" class="linkRcpPwd"> Ya tengo una cuenta</a>
             </label>
         </div>
         <div class="campoForm">

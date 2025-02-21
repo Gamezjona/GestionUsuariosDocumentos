@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.php">
     <title>Subir Documentos</title>
 </head>
 
@@ -17,7 +17,7 @@
 
         <nav class="navLinks">
             <button class="btnNavLink">
-                <a class="linkNav" href="listadoDocumentos.html">Listado de Documentos</a>
+                <a class="linkNav" href="listadoDocumentos.php">Listado de Documentos</a>
             </button>
         </nav>
     </header>
