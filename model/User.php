@@ -13,12 +13,13 @@ class User {
     }
 
     // 🔹 Crear Usuario
-    public function create($nombre, $apellido) {
+    public function create($nombre, $apellido, $contrasena) {
         try {
-            $sql = "INSERT INTO usuarios (nombre, apellido) VALUES (:nombre, :apellido)";
+            $sql = "INSERT INTO usuarios (nombre, apellido, contrasena) VALUES (:nombre, :apellido, :contrasena)";
             $stmt = $this->conexion->pdo->prepare($sql);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':apellido', $apellido);
+            $stmt->bindParam(':contrasena', $contrasena);
             return $stmt->execute();
         } catch (Exception $e) {
             die("Error al insertar usuario: " . $e->getMessage());
@@ -38,14 +39,26 @@ class User {
         }
     }
 
+    // 🔹 Obtener Todos los Usuarios
+    public function getAll() {
+        try {
+            $sql = "SELECT * FROM usuarios";
+            $stmt = $this->conexion->pdo->query($sql);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            die("Error al obtener usuarios: " . $e->getMessage());
+        }
+    }
+
     // 🔹 Actualizar Usuario
-    public function update($id, $nombre, $apellido) {
+    public function update($id, $nombre, $apellido, $contrasena) {
         try {
             $sql = "UPDATE usuarios SET nombre = :nombre, apellido = :apellido WHERE id = :id";
             $stmt = $this->conexion->pdo->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':apellido', $apellido);
+            $stmt->bindParam(':contrasena', $contrasena);
             return $stmt->execute();
         } catch (Exception $e) {
             die("Error al actualizar usuario: " . $e->getMessage());
