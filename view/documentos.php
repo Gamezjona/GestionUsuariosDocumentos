@@ -31,17 +31,15 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
             <button class="btnNavLink">
                 <a class="linkNav" href="listadoDocumentos.php">Listado de Documentos</a>
             </button>
+            <button class="btnNavLink">
+                <a class="linkNav" href="../controller/cCerrarSessiones.php">Cerrar Session</a>
+            </button>
         </nav>
     </header>
 
     <div class="wrapper">
         <form action="../controller/cCreateDocument.php" class="fmlrLogin" enctype="multipart/form-data" method="post">
             <input type="text" name="usuario_id" hidden value="<?php echo $_SESSION['id']; ?>">
-
-            <div class="campoForm">
-                <label for="nombre" class="lbForm">Inserta el nombre del documento</label>
-                <input id="nombre" name="nombre" type="text" class="ip" required>
-            </div>
             <div class="campoForm">
                 <label for="documento" class="lbForm">Seleccionar Documento (Word, PDF, Excel)</label>
                 <input id="documento" name="documento" type="file" accept=".doc,.pdf,.xlsx" class="ip" required>

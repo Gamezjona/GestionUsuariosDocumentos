@@ -24,7 +24,11 @@ if (isset($_POST['correo'], $_POST['password'])) {
             $_SESSION['apellido'] = $userData['apellido'];
             $_SESSION['correo'] = $userData['correo'];
 
-            header("Location: ../view/listadoDocumentos.php");
+            if($userData['correo'] != "admin@main.com"){
+                header("Location: ../view/listadoDocumentos.php");
+            }else{
+                header("Location: ../view/usuarios.php");
+            }
             exit; // Importante para evitar ejecución posterior
         } else {
             throw new Exception("Usuario o contraseña incorrectos.");

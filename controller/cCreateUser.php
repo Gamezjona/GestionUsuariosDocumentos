@@ -3,7 +3,7 @@
 require_once '../model/UserModel.php';
 session_start(); // Se recomienda iniciar la sesión al principio
 
-if (isset($_POST['documento'], $_POST['apellido'], $_POST['correo'], $_POST['password'], $_POST['password2'])) {
+if (isset($_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['password'], $_POST['password2'])) {
 
     $nombre = trim($_POST['nombre']);
     $apellido = trim($_POST['apellido']);

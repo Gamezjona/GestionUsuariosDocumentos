@@ -3,7 +3,13 @@
 session_start();
 
 if(isset($_SESSION['nombre'])){
+
+  if($_SESSION['nombre'] != "Admin"){
     header("Location: ../view/listadoDocumentos.php");
+  }else{
+    header("Location: ../view/usuarios.php");
+  }
+    
 }
 ?>
 

@@ -30,6 +30,9 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
             <button class="btnNavLink">
                 <a class="linkNav" href="../index.html">Regresar</a>
             </button>
+            <button class="btnNavLink">
+                <a class="linkNav" href="../controller/cCerrarSessiones.php">Cerrar Session</a>
+            </button>
         </nav>
     </header>
 
@@ -48,14 +51,12 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
                 $list = verDocumentos($_SESSION['id']); // Asegúrate de pasar el ID del usuario correctamente
 
                 if ($list != false) {
-
-                    echo "Si entra";
                     foreach ($list as $document) {  // Recorremos el array de documentos
                 ?>
                         <tr>
-                            <td><?php echo $document['name']; ?></td>
-                            <td><?php echo $document['tipo']; ?></td>
-                            <td><button class="btnEliminar">Eliminar</button></td>
+                            <td><?php echo $document['nombre']; ?></td>
+                            <td><?php echo $document['tipo_archivo']; ?></td>
+                            <td><a class="btnEliminar" href="../controller/cDeleteDocument.php?document_id=<?php echo $document['id'];?>&nombreDocument=<?php echo $document['nombre'];?>">Eliminar</a></td>
                         </tr>
                     <?php
                     }
