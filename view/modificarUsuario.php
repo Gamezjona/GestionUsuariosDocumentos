@@ -15,7 +15,7 @@ if (empty($_GET['user_id'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modificar Usuario</title>
-  <link rel="stylesheet" href="../resources/css/style.css" />
+  <link rel="stylesheet" href="../resources/css/style2.css" />
 </head>
 
 <body>
@@ -25,30 +25,34 @@ if (empty($_GET['user_id'])) {
       <p class="logoNombre"></p>
     </div>
     <nav class="navLinks">
-      <button class="btnNavLink">
         <a class="linkNav" href="usuarios.php">Regresar</a>
-      </button>
     </nav>
   </header>
 
-  <div class="container">
-    <h1>Modificar Usuario</h1>
 
-    <form action="../controller/cUpdateUser.php" method="POST">
-      
+
+  <section>
+    <form action="../controller/cUpdateUser.php" method="post">
+      <h2 >Modificar Usuario</h2>
+
       <input type="hidden" name="user_id" value="<?php echo $data['id']; ?>" />
 
-      <label for="nombre">Nombre:</label>
+      <div class="campoForm">
+        <label for="ipEmail" class="lbForm">Nombre(s)</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nuevo dato" value="<?php echo $data['nombre']; ?>">
+      </div>
+      <div class="campoForm">
+        <label for="ipEmail" class="lbForm">Apellidos</label>
 
-      <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nuevo dato" value="<?php echo $data['nombre']; ?>">
+        <input type="text" id="apellido" name="apellido" placeholder="Ingrese el nuevo dato" value="<?php echo $data['apellido']; ?>">
+      </div>
 
-      <label for="apellido">Apellido:</label>
-      <input type="text" id="apellido" name="apellido" placeholder="Ingrese el nuevo dato" value="<?php echo $data['apellido']; ?>">
+      <div class="campoForm">
+        <label for="ipEmail" class="lbForm">Correo Electronico</label>
 
-      <label for="email">Correo Electrónico:</label>
-      <input type="email" id="correo" name="correo" placeholder="Ingrese el nuevo dato" value="<?php echo $data['correo']; ?>">
+        <input type="email" id="correo" name="correo" placeholder="Ingrese el nuevo dato" value="<?php echo $data['correo']; ?>">
+      </div>
 
-      <label for="password">Contraseña:</label>
       <input
         type="password"
         id="password"
@@ -58,9 +62,7 @@ if (empty($_GET['user_id'])) {
 
       <button type="submit" class="btnModificar">Modificar Usuario</button>
     </form>
-  </div>
-
-  <script src="script.js"></script>
+  </section>
 </body>
 
 </html>

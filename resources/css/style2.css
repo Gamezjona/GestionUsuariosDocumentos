@@ -1,0 +1,281 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  transition: all 0.3s ease;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.242), rgba(0, 0, 0, 0.336)),
+    url("https://images.pexels.com/photos/30746908/pexels-photo-30746908/free-photo-of-la-torre-de-la-doncella-al-anochecer-en-estambul.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
+      no-repeat center center/cover;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 4rem;
+  background: rgba(140, 92, 159, 0.747);
+  width: 100%;
+}
+
+/* Contenedor de enlaces */
+.navLinks {
+  display: flex;
+  gap: 15px;
+}
+
+/* Botones del menú */
+.linkNav {
+  border: 2px solid rgba(255, 255, 254, 0.913);
+  background-color: rgba(255, 255, 254, 0.913);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  color: #2c2c2c;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.linkNav:hover {
+  background: rgba(255, 0, 144, 0.7);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 3px 3px 10px rgba(255, 0, 144, 0.4);
+}
+
+.linkNav:active {
+  background: rgba(255, 0, 144, 0.9);
+  transform: scale(0.98);
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 4rem); /* Resta la altura del header */
+  padding: 20px;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 350px;
+  padding: 30px 20px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 320px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.lbForm {
+  font-size: 14px;
+  color: #c9a7ff; /* Lila claro */
+  margin-bottom: 8px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 12px 10px;
+  font-size: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+input:focus {
+  border-color: rgb(119, 74, 116);
+  box-shadow: 0 0 10px rgba(208, 0, 255, 0.5);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.campoBtns .btnEnviar {
+  width: 100%;
+  padding: 12px;
+  background: rgba(70, 33, 144, 0.76);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+.campoBtns .btnEnviar:hover {
+  background: rgba(70, 33, 144, 0.48);
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tituloWraper {
+  margin-bottom: 15px;
+}
+
+.tablaWraper {
+  width: max-content; /* Permite que la tabla crezca sin forzar un tamaño fijo */
+  min-width: 100%; /* Asegura que la tabla al menos ocupe el ancho del contenedor */
+  border-collapse: collapse;
+  color: #fff;
+}
+
+.tablaWraper th,
+.tablaWraper td {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: left;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+.tablaWraper th {
+  background: rgba(70, 33, 144, 0.76);
+}
+
+.btnEliminar {
+  padding: 8px 12px;
+  background-color: rgba(255, 0, 0, 0.5);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btnEliminar:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+.btnSubir {
+  width: 100%;
+  padding: 12px;
+  background: rgba(70, 33, 144, 0.76);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s ease;
+}
+
+.btnSubir:hover {
+  background: rgba(70, 33, 144, 0.48);
+}
+
+.btnModificar {
+    padding: 8px 12px;
+    background-color: rgba(140, 92, 159, 0.45);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
+
+.btnModificar:hover {
+    background-color: rgba(140, 92, 159, 0.8);
+}
+
+/* Media Query para celulares */
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .tablaWraper th,
+  .tablaWraper td {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .btnSubir {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btnEliminar {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
+/* Adaptación a dispositivos móviles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .linkNav {
+    width: 80%;
+    max-width: 200px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  form {
+    max-width: 90%;
+  }
+}

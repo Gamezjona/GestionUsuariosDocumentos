@@ -1,9 +1,9 @@
 <?php
 class Conexion {
-    private $host = "localhost";
-    private $dbname = "userdocument";
-    private $usuario = "root";
-    private $password = "";
+    private $host = "sql113.infinityfree.com";
+    private $dbname = "if0_37830654_userDocument";
+    private $usuario = "if0_37830654";
+    private $password = "sebasGamez8";
     public $pdo;
 
     public function __construct() {

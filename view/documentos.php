@@ -16,7 +16,7 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/style2.css">
     <title>Subir Documentos</title>
 </head>
 
@@ -28,17 +28,17 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
         </div>
 
         <nav class="navLinks">
-            <button class="btnNavLink">
-                <a class="linkNav" href="listadoDocumentos.php">Listado de Documentos</a>
-            </button>
-            <button class="btnNavLink">
-                <a class="linkNav" href="../controller/cCerrarSessiones.php">Cerrar Session</a>
-            </button>
+
+            <a class="linkNav" href="listadoDocumentos.php">Listado de Documentos</a>
+
+            <a class="linkNav" href="../controller/cCerrarSessiones.php">Cerrar Session</a>
+
         </nav>
     </header>
 
-    <div class="wrapper">
+    <section>
         <form action="../controller/cCreateDocument.php" class="fmlrLogin" enctype="multipart/form-data" method="post">
+            <h2 class="tituloWraper">Subir Documentos</h2>
             <input type="text" name="usuario_id" hidden value="<?php echo $_SESSION['id']; ?>">
             <div class="campoForm">
                 <label for="documento" class="lbForm">Seleccionar Documento (Word, PDF, Excel)</label>
@@ -48,9 +48,10 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
                 <input type="submit" value="Subir Documento" class="btnEnviar">
             </div>
         </form>
-    </div>
+    </section>
 
 </body>
+
 </html>
 
 </body>
