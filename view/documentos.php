@@ -17,6 +17,7 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../resources/css/style2.css">
+    <script src="../resources/js/sweetalert2@11.js"></script>
     <title>Subir Documentos</title>
 </head>
 
@@ -35,6 +36,34 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
 
         </nav>
     </header>
+
+    <?php
+    if (isset($_SESSION['exito']) || isset($_SESSION['error'])) {
+        // Verificar si existe el mensaje de éxito
+        if (isset($_SESSION['exito'])) {
+            $icon = "success";
+            $message = $_SESSION['exito'];
+            unset($_SESSION['exito']); // Limpiar el mensaje después de mostrarlo
+        }
+        // Verificar si existe el mensaje de error
+        elseif (isset($_SESSION['error'])) {
+            $icon = "error";
+            $message = $_SESSION['error'];
+            unset($_SESSION['error']); // Limpiar el mensaje después de mostrarlo
+        }
+    ?>
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "<?php echo $icon; ?>",
+                title: "<?php echo addslashes($message); ?>",
+                showConfirmButton: false,
+                timer: 2800
+            });
+        </script>
+    <?php
+    }
+    ?>
 
     <section>
         <form action="../controller/cCreateDocument.php" class="fmlrLogin" enctype="multipart/form-data" method="post">

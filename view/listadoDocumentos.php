@@ -17,7 +17,47 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../resources/css/style2.css">
+    <script src="../resources/js/sweetalert2@11.js"></script>
     <title>Listado de Documentos</title>
+    <style>
+        /* Botones interactivos */
+        .btnDescargar {
+            padding: 10px 14px;
+            margin-right: 10px;
+            background-color: #a2ff00;
+            border: none;
+            border-radius: 8px;
+            color: #333;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btnDescargar:hover {
+            background-color: #8dd700;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+
+        .btnView {
+            padding: 10px 14px;
+            margin-right: 10px;
+            background-color: rgb(148, 242, 220);
+            border: none;
+            border-radius: 8px;
+            color: #333;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btnView:hover {
+            background-color: rgb(56, 102, 91);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 
 <body>
@@ -30,14 +70,43 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
         <nav class="navLinks">
 
             <a class="linkNav" href="../index.html">Regresar</a>
+            <a class="linkNav" href="modificarUsuario.php?user_id=<?php echo $_SESSION['id']; ?>">Actualizar usuario</a>
 
             <a class="linkNav" href="../controller/cCerrarSessiones.php">Cerrar Session</a>
         </nav>
     </header>
 
+    <?php
+    if (isset($_SESSION['exito']) || isset($_SESSION['error'])) {
+        // Verificar si existe el mensaje de éxito
+        if (isset($_SESSION['exito'])) {
+            $icon = "success";
+            $message = $_SESSION['exito'];
+            unset($_SESSION['exito']); // Limpiar el mensaje después de mostrarlo
+        }
+        // Verificar si existe el mensaje de error
+        elseif (isset($_SESSION['error'])) {
+            $icon = "error";
+            $message = $_SESSION['error'];
+            unset($_SESSION['error']); // Limpiar el mensaje después de mostrarlo
+        }
+    ?>
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "<?php echo $icon; ?>",
+                title: "<?php echo addslashes($message); ?>",
+                showConfirmButton: false,
+                timer: 2800
+            });
+        </script>
+    <?php
+    }
+    ?>
+
     <section>
         <div class="wrapper">
-            <h2 class="tituloWraper">Documentos Subidos  <?php echo htmlspecialchars($_SESSION['nombre']); ?></h2>
+            <h2 class="tituloWraper">Documentos Subidos <?php echo htmlspecialchars($_SESSION['nombre']); ?></h2>
 
             <div class="table-container">
                 <table class="tablaWraper">
@@ -59,6 +128,12 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['id'])) {
                                     <td><?php echo htmlspecialchars($document['nombre']); ?></td>
                                     <td><?php echo htmlspecialchars($document['tipo_archivo']); ?></td>
                                     <td>
+                                        <a class="btnView" href="../controller/cViewDocument.php?document_id=<?php echo $document['id']; ?>&nombreDocument=<?php echo urlencode($document['nombre']); ?>">
+                                            View
+                                        </a>
+                                        <a class="btnDescargar" href="../controller/cDownloadDocument.php?document_id=<?php echo $document['id']; ?>&nombreDocument=<?php echo urlencode($document['nombre']); ?>">
+                                            Descargar
+                                        </a>
                                         <a class="btnEliminar" href="../controller/cDeleteDocument.php?document_id=<?php echo $document['id']; ?>&nombreDocument=<?php echo urlencode($document['nombre']); ?>">
                                             Eliminar
                                         </a>

@@ -116,4 +116,25 @@ class DocumentModel
             return false;
         }
     }
+
+
+    public function deleteAll($usuario_id)
+    {
+        try {
+
+            $sql = "DELETE FROM documentos WHERE  usuario_id = :usuario_id";
+            $stmt = $this->conexion->pdo->prepare($sql);
+            $stmt->bindParam(':usuario_id', $usuario_id);
+
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log('Error al eliminar documento: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+
 }
+
+
+

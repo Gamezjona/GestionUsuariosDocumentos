@@ -12,28 +12,35 @@ if (isset($_GET['document_id']) && isset($_GET['nombreDocument']) && isset($_SES
 
     $newDocument = new DocumentModel();
 
-    // Obtener el documento desde la base de datos
-    $document = $newDocument->getDocumentByNameAndUser($docNombre, $usuario_id);
+    try {
+        // Obtener el documento desde la base de datos
+        $document = $newDocument->getDocumentByNameAndUser($docNombre, $usuario_id);
 
-    if ($document) {
-        $filePath = $document['ruta_archivo']; // Ruta del archivo almacenada en la BD
+        if ($document) {
+            $filePath = $document['ruta_archivo']; // Ruta del archivo almacenada en la BD
 
-        // Eliminar el archivo del servidor
-        if (file_exists($filePath) && unlink($filePath)) {
-            // Eliminar el registro de la base de datos
-            $deleteResult = $newDocument->delete($document_id, $usuario_id);
+            // Eliminar el archivo del servidor
+            if (file_exists($filePath) && unlink($filePath)) {
+                // Eliminar el registro de la base de datos
+                $deleteResult = $newDocument->delete($document_id, $usuario_id);
 
-            if ($deleteResult) {
-                header("Location: ../view/listadoDocumentos.php");
+                if ($deleteResult) {
+                    $_SESSION['exito'] = "Documento eliminado exitosamente.";
+                    header("Location: ../view/listadoDocumentos.php");
+                } else {
+                    throw new Exception("Hubo un error al eliminar el documento de la base de datos.");
+                }
             } else {
-                echo "Hubo un error al eliminar el documento de la base de datos.";
+                throw new Exception("Error al eliminar el archivo del servidor.");
             }
         } else {
-            echo "Error al eliminar el archivo del servidor.";
+            throw new Exception("Documento no encontrado.");
         }
-    } else {
-        echo "Documento no encontrado.";
+    } catch (Exception $e) {
+        $_SESSION['error'] = $e->getMessage();
+        header("Location: ../view/listadoDocumentos.php");
     }
 } else {
-    echo "Faltan datos en el formulario.";
+    $_SESSION['error'] = "Faltan datos en el formulario.";
+    header("Location: ../view/listadoDocumentos.php");
 }

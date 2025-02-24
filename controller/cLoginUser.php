@@ -9,7 +9,7 @@ if (isset($_POST['correo'], $_POST['password'])) {
     $password = $_POST['password'];
 
     if (!$correo) {
-        die("Correo no válido.");
+        throw new Exception("Correo no válido.");
     }
 
     $user = new UserModel();
@@ -35,9 +35,11 @@ if (isset($_POST['correo'], $_POST['password'])) {
         }
 
     } catch (Exception $e) {
-        echo $e->getMessage();
+        $_SESSION['error'] = $e->getMessage();
+        header("Location: ../view/login.php");
     }
 
 } else {
-    echo "Faltan datos.";
+    $_SESSION['error'] = "Faltan datos.";
+    header("Location: ../view/login.php");
 }

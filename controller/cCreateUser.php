@@ -48,11 +48,15 @@ if (isset($_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['passwo
                 throw new Exception("Correo electrónico ya existe.");
             }
         } catch (Exception $e) {
-            echo $e->getMessage();
+            $_SESSION['error'] = $e->getMessage();
+            header("Location: ../view/registro.html");
         }
+
     } else {
-        echo "Las contraseñas no coinciden";
+        $_SESSION['error'] = "Las contraseñas no coinciden";
+        header("Location: ../view/registro.php");
     }
 } else {
-    echo "Faltan datos";
+    $_SESSION['error'] = "Faltan datos";
+    header("Location: ../view/registro.php");
 }

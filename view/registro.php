@@ -1,36 +1,29 @@
-<?php
-if (empty($_GET['user_id'])) {
-  header("Location: usuarios.php");
-}else{
-  require '../controller/cShowListUser.php';
-
-  $data = verUsuario($_GET['user_id']);
-}
-?>
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modificar Usuario</title>
-  <link rel="stylesheet" href="../resources/css/style2.css" />
+  <link rel="stylesheet" type="text/css" href="../resources/css/style2.css" />
   <script src="../resources/js/sweetalert2@11.js"></script>
+
+  <title>Registro</title>
 </head>
 
-<body>
+<body class="bodyRegistro">
   <header>
     <div class="logo">
       <img src="" alt="" class="logoImg" />
       <p class="logoNombre"></p>
     </div>
+
     <nav class="navLinks">
-        <a class="linkNav" href="usuarios.php">Regresar</a>
+      <a class="linkNav" href="../index.html">Inicio</a>
     </nav>
   </header>
 
   <?php
+  session_start();
   if (isset($_SESSION['exito']) || isset($_SESSION['error'])) {
     // Verificar si existe el mensaje de éxito
     if (isset($_SESSION['exito'])) {
@@ -59,35 +52,50 @@ if (empty($_GET['user_id'])) {
   ?>
 
   <section>
-    <form action="../controller/cUpdateUser.php" method="post">
-      <h2 >Modificar Usuario</h2>
-
-      <input type="hidden" name="user_id" value="<?php echo $data['id']; ?>" />
-
+    <form action="../controller/cCreateUser.php" method="post">
+      <h2 class="tituloForm">Registro</h2>
       <div class="campoForm">
         <label for="ipEmail" class="lbForm">Nombre(s)</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nuevo dato" value="<?php echo $data['nombre']; ?>">
+
+        <input id="ipEmail" name="nombre" type="text" required />
       </div>
       <div class="campoForm">
         <label for="ipEmail" class="lbForm">Apellidos</label>
 
-        <input type="text" id="apellido" name="apellido" placeholder="Ingrese el nuevo dato" value="<?php echo $data['apellido']; ?>">
+        <input id="ipEmail" name="apellido" type="text" required />
       </div>
 
       <div class="campoForm">
         <label for="ipEmail" class="lbForm">Correo Electronico</label>
 
-        <input type="email" id="correo" name="correo" placeholder="Ingrese el nuevo dato" value="<?php echo $data['correo']; ?>">
+        <input id="ipEmail" name="correo" type="email" required />
       </div>
 
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Nueva contraseña"
-        value="<?php echo $data['contrasena']; ?>" />
+      <div class="campoForm">
+        <label for="ipPwd" class="lbForm">Contraseña</label>
 
-      <button type="submit" class="btnModificar">Modificar Usuario</button>
+        <input
+          id="ipPwd"
+          name="password"
+          type="password"
+
+          required />
+      </div>
+      <div class="campoForm">
+        <label for="ipPwd" class="lbForm">Comfirmar Contraseña</label>
+
+        <input
+          id="ipPwd2"
+          name="password2"
+          type="password"
+
+          required />
+      </div>
+      <div class="campoBtns">
+        <label for="" class="lbBtns">
+          <input type="submit" value="Enviar" class="btnEnviar" />
+        </label>
+      </div>
     </form>
   </section>
 </body>
